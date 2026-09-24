@@ -7,6 +7,7 @@ resume/portfolio writeup -- don't let this default silently become a claim of
 fine-tuning you didn't do.
 """
 from functools import lru_cache
+from typing import Optional
 
 from transformers import pipeline
 
@@ -30,7 +31,7 @@ def summarize(text: str, max_length: int = 180, min_length: int = 60) -> str:
     return result[0]["summary_text"]
 
 
-def summarize_document(chunks: list[dict], focus_section: str | None = None) -> str:
+def summarize_document(chunks: list[dict], focus_section: Optional[str] = None) -> str:
     """
     Summarize a document by summarizing each relevant chunk, then summarizing
     the concatenation of chunk summaries (map-reduce style).

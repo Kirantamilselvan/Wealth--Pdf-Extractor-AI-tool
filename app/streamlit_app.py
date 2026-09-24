@@ -5,18 +5,22 @@ Run with:
     streamlit run app/streamlit_app.py
 """
 import json
+import os
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
 import streamlit as st
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+load_dotenv()
 
 from models.summarizer import summarize_document
 from models.risk_classifier import extract_risk_flags_for_document
 from rag.retriever import answer_query
 
-PROCESSED_DIR = Path("data/processed")
+PROCESSED_DIR = Path(os.getenv("PROCESSED_DATA_DIR", "data/processed"))
 
 st.set_page_config(page_title="Wealth Document Intelligence", layout="wide")
 st.title("Wealth Document Intelligence")

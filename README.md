@@ -63,8 +63,8 @@ python rag/build_index.py
 ### 4. Run the pipeline via LangGraph (CLI test)
 
 ```bash
-python graph/orchestrator.py --mode summarize --doc data/processed/AAPL_10-K_2024.json
-python graph/orchestrator.py --mode risk --doc data/processed/AAPL_10-K_2024.json
+python graph/orchestrator.py --mode summarize --doc data/processed/AAPL_10-K_2024-11-01.json
+python graph/orchestrator.py --mode risk --doc data/processed/AAPL_10-K_2024-11-01.json
 python graph/orchestrator.py --mode query --question "What supply chain risks did Apple disclose?"
 ```
 
@@ -80,7 +80,7 @@ streamlit run app/streamlit_app.py
 python eval/harness.py --n 500
 ```
 
-Results (faithfulness score, factual consistency, hallucination rate) are written to
+Results (faithfulness score and hallucination rate) are written to
 `eval/results/eval_report.json` and printed as a summary table.
 
 ## AWS deployment
